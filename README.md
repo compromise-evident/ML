@@ -2,14 +2,14 @@ Run it: ```apt install geany python3-torch```. Open the .py in Geany.<br>
 Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 
 <p align="center">
-  <img src="">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Terminal_4e4abe173a64d076364fff6df84783f0.png">
 </p>
 
 <br>
 <br>
 
 <p align="center">
-  <img src="">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Configurable_6cdb09c1d5bfd68f293432ca910354e6.png">
 </p>
 
 <br>
@@ -25,12 +25,13 @@ If ```longest``` is set to 784 for example,
 then "0.0" is appended until the entire string is 784 neurons long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
+Note, "-" are zeros; less "seen" by the model, while "@" are ones; what the model really pays attention to.
 * Each line: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
 
 ```text
 
-   label                        your data
-     |                              |
+   label                       your data
+     |                             |
 
      2 ------@@@-@--------@@@@@@-------------------------@
      9 @--------------------------------------------------------@@
