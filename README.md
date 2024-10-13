@@ -25,7 +25,8 @@ If ```longest``` is set to 784 for example,
 then "0.0" is appended until the entire string is 784 neurons long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
-Each line in train.txt & test.txt must have ```label```, ```space```, ```- and @```, ```new line``` (\n.)
+Each line in train.txt & test.txt: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
+Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 
 ```text
 
