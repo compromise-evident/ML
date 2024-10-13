@@ -18,14 +18,13 @@ Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 ## Replace train.txt & test.txt
 
 train.txt & test.txt are the same but of unique items.
-Replace them with the sample below.
-"-" is normalized as "0.0"
-while "@" is normalized as "1.0".
+Replace them with anything like below.
+"-" is normalized as "0.0" (less "seen" by the model)
+while "@" is normalized as "1.0" (what the model really pays attention to.)
 If ```longest``` is set to 784 for example,
 then "0.0" is appended until the entire string is 784 neurons long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
-Note, "-" are zeros; less "seen" by the model, while "@" are ones; what the model really pays attention to.
 * Each line: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
 
 ```text
