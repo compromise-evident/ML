@@ -21,10 +21,11 @@ train.txt & test.txt are the same but of unique items.
 Replace them with anything like below.
 "-" is normalized as "0.0" (less "seen" by the model)
 while "@" is normalized as "1.0" (what the model really pays attention to.)
-If ```longest``` is set to 784 for example,
-then "-" is appended until the entire string (your data) is 784 long.
+If ```longest``` is set to 900 for example,
+then "-" is appended until your data string is 900 long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
+See, ```longest``` is the number of neurons in the input layer.
 Each line in train.txt & test.txt: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
 Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 
