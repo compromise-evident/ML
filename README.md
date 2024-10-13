@@ -22,7 +22,7 @@ Replace them with anything like below.
 "-" is normalized as "0.0" (less "seen" by the model)
 while "@" is normalized as "1.0" (what the model really pays attention to.)
 If ```longest``` is set to 784 for example,
-then "0.0" is appended until the entire string is 784 neurons long.
+then "-" is appended until the entire string (your data) is 784 long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
 Each line in train.txt & test.txt: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
