@@ -164,7 +164,7 @@ elif option == 4:
 	# Gets number of items to cognize.
 	with open('cognize.txt', 'rb') as f: total_real_world_items = f.read().count(10)
 	
-	# Tests model.
+	# Uses model.
 	print("\n", end='')
 	model.eval()
 	in_stream = open('cognize.txt', 'r')
