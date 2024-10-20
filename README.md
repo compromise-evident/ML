@@ -9,7 +9,7 @@ Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 <br>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Configurable_6cdb09c1d5bfd68f293432ca910354e6.png">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Configurable_7d3fe46d2709a004c1fcd83027ea7af6.png">
 </p>
 
 <br>
@@ -25,8 +25,6 @@ If ```longest``` is set to 900 for example,
 then "-" is appended until your data string is 900 long.
 It's completely safe. If your string is longer than ```longest```,
 only the first ```longest``` characters of that string will be used.
-See, ```longest``` is the number of neurons in the input layer,
-while ```classes``` is the number of neurons in the output layer.
 Each line in train.txt & test.txt: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
 Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 
