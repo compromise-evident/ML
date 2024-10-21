@@ -49,7 +49,7 @@ Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 <br>
 <br>
 
-### Given training-data is human-readable version of MNIST, with labels & data combined
+### The given training-data is a text version of MNIST, with labels & data combined
 
 Extract training-data.tar.bz2.
 **train.txt** contains 60,000 labeled images of handwritten digits
