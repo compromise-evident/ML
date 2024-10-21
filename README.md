@@ -57,4 +57,3 @@ Extract training-data.tar.bz2.
 its 784 characters by rows of 28, as it is a 28x28 image.
 **test.txt** contains 10,000 more such lines not found among the 60k.
 See **visual_for_you.txt** to get a good look at each image.
-I created this training-data from MNIST.
