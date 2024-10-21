@@ -1,4 +1,4 @@
-# ML 2.0.0 - AI simplified in 1 file of 80 lines. Verify that your model can generalize on the given training-          Run it: "apt install geany python3-torch". Open the .py in Geany.
+# ML 2.0.0 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
 #            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
 
 import torch
