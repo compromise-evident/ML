@@ -38,7 +38,7 @@ Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 The given training-data is a text version of MNIST, with labels & data combined like above.
 **train.txt** contains 60,000 labeled images of handwritten digits
 (one label & image per line of text.) An image becomes legible if you arrange
-its 784 characters by stacking rows of 28 (it's a 28x28 image.)
+its 784 characters "---@@@---" by stacking rows of 28 (it's a 28x28 image.)
 **test.txt** contains 10,000 more such lines not found among the 60k.
 See **visual_for_you.txt** to see each image
 already stacked 28x28.
