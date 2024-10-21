@@ -56,4 +56,5 @@ Extract training-data.tar.bz2.
 (one label & image per line of text.) An image becomes legible if you arrange
 its 784 characters by stacking rows of 28, as it is a 28x28 image.
 **test.txt** contains 10,000 more such lines not found among the 60k.
-See **visual_for_you.txt** to get a good look at each image.
+See **visual_for_you.txt** to get a good look at each image
+already stacked 28x28.
