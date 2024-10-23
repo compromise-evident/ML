@@ -9,7 +9,7 @@ Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 <br>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Configurable_7d3fe46d2709a004c1fcd83027ea7af6.png">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Configurable_8dfa0ffbcaedd8bf4da95f84a158f281.png">
 </p>
 
 <br>
