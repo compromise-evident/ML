@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-# YOUR CONTROLS - UNLIMITED:
+# YOUR CONTROLS - UNLIMITED - GET NEW MODEL PER CHANGE:
 longest = 784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)  input layer
 classes =  10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
 depth   =   2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
