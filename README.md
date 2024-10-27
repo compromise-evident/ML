@@ -54,3 +54,11 @@ only the first ```longest``` characters of that string will be used.
 Each line in train.txt & test.txt: ```label```, ```space```, ```- and @```, ```new line``` (\n.)
 Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 (You have to create cognize.txt.)
+
+<br>
+<br>
+
+## When you're done playing with weak configurations
+
+* Set ```depth``` to ~5
+* Set ```width``` to ~5000
