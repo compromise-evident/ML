@@ -2,6 +2,14 @@ ML
 
 
 
+Version 2.0.1   Actually useful stats. Average of  "off by n for classification"
+                and a second "results_extra.txt" file: says OK if label correct,
+                but if incorrect:  says actual label  and by how much  it's off.
+                Original "results.txt" still there for  easy merging of  results
+                for those who need consensus of multiple models (use StatMerge.)
+                Stats after testing now reordered: % correct first, good layout.
+                Oct 29 2024
+
 Version 2.0.0   Minimalist, efficient.
                 Oct 20 2024
 
