@@ -1,4 +1,4 @@
-# ML 2.0.1 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
+# ML 2.0.2 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
 #            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
 
 import torch
@@ -10,7 +10,6 @@ longest = 784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)
 classes =  10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
 depth   =   2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
 width   =  16 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
-compute ='cpu'# 'cuda' for NVIDIA GPU, 'mps' for Mac GPU ('cuda:0', 'cuda:1'...)  hardware to harness
 
 print("\n(1) Model   (Create a new model and save it as one file.)")
 print(  "(2) Train   (Train & test model on train.txt & test.txt.)")
@@ -25,7 +24,7 @@ if o == 1: # Model______________________________________________________________
 	torch.save(model.state_dict(), 'Model.pth'); print("\nModel.pth saved with hidden layers:  ", depth, "deep,", width, "wide.")      # Saves model to file.
 
 if o == 2: # Train___________________________________________________________________________________________________________________________________________________
-	model.load_state_dict(torch.load('Model.pth', map_location = compute))                                                             # Loads model from file.
+	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
 	with open('training-data/train.txt', 'rb') as f: total_training_data_items = f.read().count(10)                                    # Number of items to train on.
 	in_stream = open('training-data/train.txt', 'r')
 	criterion = nn.CrossEntropyLoss(); optimizer = optim.SGD(model.parameters(), lr = 0.01); model.train(); print("\n", end = '');
@@ -37,11 +36,11 @@ if o == 2: # Train______________________________________________________________
 		for b in range(length):
 			if line[1][b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		optimizer.zero_grad(); outputs = model(input_data); loss = criterion(outputs, target_data); loss.backward(); optimizer.step(); # Uses & updates model.
+		optimizer.zero_grad(); output = model(input_data); loss = criterion(output, target_data); loss.backward(); optimizer.step();   # Uses & updates model.
 	in_stream.close(); torch.save(model.state_dict(), 'Model.pth');                                                                    # Saves updated model.
 
 if o == 3 or o == 2: # Test__________________________________________________________________________________________________________________________________________
-	model.load_state_dict(torch.load('Model.pth', map_location = compute))                                                             # Loads model from file.
+	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
 	with open('training-data/test.txt', 'rb') as f: total_testing_data_items = f.read().count(10)                                      # Number of items to test on.
 	misclassified = 0; off_by_summation = 0; model.eval(); print("\n", end = '');
 	in_stream = open('training-data/test.txt', 'r'); out_stream = open('results.txt', 'w'); out_xtra = open('results_extra.txt', 'w');
@@ -53,7 +52,7 @@ if o == 3 or o == 2: # Test_____________________________________________________
 		for b in range(length):
 			if line[1][b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		with torch.no_grad(): outputs = model(input_data); _, predictions = torch.max(outputs, 1);                                     # Uses model.
+		with torch.no_grad(): output = model(input_data); _, predictions = torch.max(output, 1);                                       # Uses model.
 		classification = predictions[0].item(); out_stream.write(f"{classification}\n");                                               # Saves classification.
 		if classification != expected_class: misclassified += 1; off_by_summation += (abs(expected_class - classification));           # Checks if misclassified.
 		if classification == expected_class: out_xtra.write(f"{classification} (OK\n")
@@ -64,7 +63,7 @@ if o == 3 or o == 2: # Test_____________________________________________________
 	print(f"Off by {off_by_summation / misclassified} on average (see results_extra.txt)")
 
 if o == 4: # Use_____________________________________________________________________________________________________________________________________________________
-	model.load_state_dict(torch.load('Model.pth', map_location = compute))                                                             # Loads model from file.
+	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
 	with open('cognize.txt', 'rb') as f: total_real_world_items = f.read().count(10)                                                   # Number of items to cognize.
 	model.eval(); print("\n", end = '');
 	in_stream = open('cognize.txt', 'r'); out_stream = open('results.txt', 'w');
@@ -75,6 +74,6 @@ if o == 4: # Use________________________________________________________________
 		for b in range(length):
 			if line[b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		with torch.no_grad(): outputs = model(input_data); _, predictions = torch.max(outputs, 1);                                     # Uses model.
+		with torch.no_grad(): output = model(input_data); _, predictions = torch.max(output, 1);                                       # Uses model.
 		classification = predictions[0].item(); out_stream.write(f"{classification}\n");                                               # Saves classification.
 	in_stream.close(); out_stream.close(); print("\nSee results.txt");
