@@ -2,6 +2,12 @@ ML
 
 
 
+Version 2.0.2   Removed device "compute" option that was for future experiments.
+                This ML via GPU is actually pretty stupid,  and not even closely
+                ready for the general public when it comes to  minimalist setup,
+                and especially the code. GPUs not worth it for mathematical fun.
+                Nov 6 2024
+
 Version 2.0.1   Actually useful stats. Average of  "off by n for classification"
                 and a second "results_extra.txt" file: says OK if label correct,
                 but if incorrect:  says actual label  and by how much  it's off.
