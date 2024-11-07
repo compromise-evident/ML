@@ -36,7 +36,7 @@ if o == 2: # Train______________________________________________________________
 		for b in range(length):
 			if line[1][b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		optimizer.zero_grad(); output = model(input_data); loss = criterion(output, target_data); loss.backward(); optimizer.step();   # Uses & updates model.
+		optimizer.zero_grad(); outputs = model(input_data); loss = criterion(outputs, target_data); loss.backward(); optimizer.step(); # Uses & updates model.
 	in_stream.close(); torch.save(model.state_dict(), 'Model.pth');                                                                    # Saves updated model.
 
 if o == 3 or o == 2: # Test__________________________________________________________________________________________________________________________________________
@@ -52,7 +52,7 @@ if o == 3 or o == 2: # Test_____________________________________________________
 		for b in range(length):
 			if line[1][b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		with torch.no_grad(): output = model(input_data); _, predictions = torch.max(output, 1);                                       # Uses model.
+		with torch.no_grad(): outputs = model(input_data); _, predictions = torch.max(outputs, 1);                                     # Uses model.
 		classification = predictions[0].item(); out_stream.write(f"{classification}\n");                                               # Saves classification.
 		if classification != expected_class: misclassified += 1; off_by_summation += (abs(expected_class - classification));           # Checks if misclassified.
 		if classification == expected_class: out_xtra.write(f"{classification} (OK\n")
@@ -74,6 +74,6 @@ if o == 4: # Use________________________________________________________________
 		for b in range(length):
 			if line[b] == '@': normalized[b] = 1.0
 		input_data = torch.tensor(normalized).view(1, longest)
-		with torch.no_grad(): output = model(input_data); _, predictions = torch.max(output, 1);                                       # Uses model.
+		with torch.no_grad(): outputs = model(input_data); _, predictions = torch.max(outputs, 1);                                     # Uses model.
 		classification = predictions[0].item(); out_stream.write(f"{classification}\n");                                               # Saves classification.
 	in_stream.close(); out_stream.close(); print("\nSee results.txt");
