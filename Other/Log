@@ -2,6 +2,9 @@ ML
 
 
 
+Version 2.0.3   Faster in getting the number of items to train / test / cognize.
+                Nov 17 2024
+
 Version 2.0.2   Removed device "compute" option that was for future experiments.
                 This ML via GPU is actually pretty stupid,  and not even closely
                 ready for the general public when it comes to  minimalist setup,
