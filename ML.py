@@ -1,13 +1,14 @@
-# ML 2.0.3 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
+# ML 2.0.4 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
 #            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
 
 import torch, torch.nn as nn, torch.optim as optim
 
-# YOUR CONTROLS - UNLIMITED - GET NEW MODEL PER CHANGE:
-longest = 784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)  input layer
-classes =  10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
-depth   =   2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
-width   =  16 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
+# YOUR CONTROLS - GET NEW MODEL AFTER CHANGING ANY 1st 4 SETTINGS
+longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)  input layer
+classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
+depth   =    2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
+width   =   16 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
+ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is adjusted.
 
 print("\n(1) Model   (Create a new model and save it as one file.)")
 print(  "(2) Train   (Train & test model on train.txt & test.txt.)")
@@ -25,7 +26,7 @@ if o == 2: # Train______________________________________________________________
 	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
 	with open('training-data/train.txt', 'r') as f: total_training_data_items = sum(1 for line in f)                                   # Number of items to train on.
 	in_stream = open('training-data/train.txt', 'r')
-	criterion = nn.CrossEntropyLoss(); optimizer = optim.SGD(model.parameters(), lr = 0.01); model.train(); print("\n", end = '');
+	criterion = nn.CrossEntropyLoss(); optimizer = optim.SGD(model.parameters(), lr = ln_rate); model.train(); print("\n", end = '');
 	for a in range(total_training_data_items):
 		print("Training on train.txt line", (a + 1), "of", total_training_data_items)
 		line = in_stream.readline().split(); target_data = torch.tensor([int(line[0])]);                                               # Forces classification.
