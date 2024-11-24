@@ -1,4 +1,4 @@
-# ML 2.0.4 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
+# ML 3.0.0 - AI simplified in 1 file, 90 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
 #            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
 
 import torch, torch.nn as nn, torch.optim as optim
@@ -7,9 +7,13 @@ import torch, torch.nn as nn, torch.optim as optim
 longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)  input layer
 classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
 depth   =    2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
-width   =   16 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
+width   =   50 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
+retrain =   15 # Number of times to train on entire train.txt. See, batches >1 require more training.
+a_batch =  128 # Number of train.txt items studied at once.  2^n for GPU. If 1, retrain can be small.
 ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is adjusted.
+compute = 'cpu'# 'cuda' = default GPU 1. 'cuda:1' = 2nd GPU. 'cuda:2' = 3rd GPU.... NVIDIA GPUs only!
 
+if compute != 'cpu': print(f"Using GPU {torch.cuda.current_device()}   ({torch.cuda.get_device_name(torch.cuda.current_device())})\n\n\n")
 print("\n(1) Model   (Create a new model and save it as one file.)")
 print(  "(2) Train   (Train & test model on train.txt & test.txt.)")
 print(  "(3) Test    (See only testing on test.txt - no training.)")
@@ -23,20 +27,25 @@ if o == 1: # Model______________________________________________________________
 	torch.save(model.state_dict(), 'Model.pth'); print("\nModel.pth saved with hidden layers:  ", depth, "deep,", width, "wide.")      # Saves model to file.
 
 if o == 2: # Train___________________________________________________________________________________________________________________________________________________
-	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
-	with open('training-data/train.txt', 'r') as f: total_training_data_items = sum(1 for line in f)                                   # Number of items to train on.
-	in_stream = open('training-data/train.txt', 'r')
+	model.load_state_dict(torch.load('Model.pth', map_location = compute)); model = model.to(compute);                                 # Loads model from file.
+	with open('training-data/train.txt', 'r') as f: total_training_data_items = sum(1 for line in f)
+	number_of_full_batches = (total_training_data_items - (total_training_data_items % a_batch)) // a_batch                            # Number of full batches.
 	criterion = nn.CrossEntropyLoss(); optimizer = optim.SGD(model.parameters(), lr = ln_rate); model.train(); print("\n", end = '');
-	for a in range(total_training_data_items):
-		print("Training on train.txt line", (a + 1), "of", total_training_data_items)
-		line = in_stream.readline().split(); target_data = torch.tensor([int(line[0])]);                                               # Forces classification.
-		normalized[:] = [0.0] * longest; length = len(line[1]);                                                                        # Data to be classified.
-		if length > longest: length = longest
-		for b in range(length):
-			if line[1][b] == '@': normalized[b] = 1.0
-		input_data = torch.tensor(normalized).view(1, longest)
-		optimizer.zero_grad(); outputs = model(input_data); loss = criterion(outputs, target_data); loss.backward(); optimizer.step(); # Uses & updates model.
-	in_stream.close(); torch.save(model.state_dict(), 'Model.pth');                                                                    # Saves updated model.
+	input_data = torch.empty(a_batch, longest); target_data = torch.empty(a_batch, 1, dtype=torch.long).squeeze(1);
+	for loop in range(retrain):
+		in_stream = open('training-data/train.txt', 'r')
+		for a in range(number_of_full_batches):
+			print(f"Training on {a_batch}-batch {a + 1} of {number_of_full_batches} ({compute})   round {loop + 1} of {retrain}")
+			for b in range(a_batch):                                                                                                   # Grabs a batch.
+				line = in_stream.readline().split(); length = len(line[1]); normalized[:] = [0.0] * longest;
+				if length > longest: length = longest
+				for c in range(length):
+					if line[1][c] == '@': normalized[c] = 1.0
+				target_data[b] = int(line[0]); input_data[b] = torch.tensor(normalized);                                               # Class, data.
+			input_data = input_data.to(compute); target_data = target_data.to(compute); optimizer.zero_grad();                         # Pushed to GPU, grad zeroed.
+			outputs = model(input_data); loss = criterion(outputs, target_data); loss.backward(); optimizer.step();                    # Uses & updates model.
+		in_stream.close()
+	torch.save(model.state_dict(), 'Model.pth');                                                                                       # Saves updated model.
 
 if o == 3 or o == 2: # Test__________________________________________________________________________________________________________________________________________
 	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                               # Loads model from file.
