@@ -56,34 +56,20 @@ Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 <br>
 <br>
 
-# GPU - work-in-progress
-
-## Hardware
+# (WIP) GPU - do these steps in order
 
 ```text
-* SSD     $ 43 amazon.com/dp/B09ZYPTXS4
-* PSU     $ 45 amazon.com/dp/B0B4MVDRX4
-* RAM*2   $ 80 amazon.com/dp/B0143UM4TC
-* MB      $ 90 amazon.com/dp/B08KH12V25
-* CPU     $160 amazon.com/dp/B091J3NYVF
-* GPU     $285 amazon.com/dp/B08WPRMVWB
+SSD     $ 43 amazon.com/dp/B09ZYPTXS4
+PSU     $ 45 amazon.com/dp/B0B4MVDRX4
+RAM*2   $ 80 amazon.com/dp/B0143UM4TC
+MB      $ 90 amazon.com/dp/B08KH12V25 (comes with 2 SATA data cables)
+CPU     $160 amazon.com/dp/B091J3NYVF
+GPU     $285 amazon.com/dp/B08WPRMVWB
 ```
-
-Flashback here
-
-PCIE 3 v 4 grift don't fall for it
-
-4+4: MB  (say "the connector that's secretly split in half if you take a closer look.")
-
-6+2: GPU
-
-grey/black slots only: if 2 RAM stick
-
-<br>
-<br>
-
-## Software (IN THIS ORDER!)
-
+* Flashback ####################################################
+* 4+4: motherboard "the connector that's secretly split in half if you take a closer look."####################################################
+* 6+2: GPU####################################################
+* grey/black slots only: if 2 RAM stick####################################################
 * Safe preset overclock: change "Normal" to "Optimal" in BIOS, and update BIOS time (24-hour time.)
 * Do a fresh install of Devuan Linux (or Debian-based Linux).
 * ```apt install firmware-amd-graphics xserver-xorg-video-amdgpu``` then reboot. (Full res for CPU's iGPU.)
@@ -97,11 +83,7 @@ grey/black slots only: if 2 RAM stick
 * Replace "python" with "python3" in Geany's execute command.
 * Replace 'cpu' with 'cuda' in ML.py. F5 to run.
 * Open psensor (the temperature display you just installed.)
-
-<br>
-<br>
-
-### MB power button pins (short them or attach momentary-switch)
+* Finally, put a momentary-switch on the motherboard power button pins below.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Power_button_pins.png">
