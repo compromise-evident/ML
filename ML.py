@@ -11,7 +11,7 @@ width   =   50 # Number of neurons per hidden layer (wide = attentive to detail.
 retrain =   15 # Number of times to train on entire train.txt. See, batches >1 require more training.
 a_batch =  128 # Number of train.txt items studied at once.  2^n for GPU. If 1, retrain can be small.
 ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is adjusted.
-compute = 'cpu'# 'cuda' = default GPU 1. 'cuda:1' = 2nd GPU. 'cuda:2' = 3rd GPU.... NVIDIA GPUs only!
+compute = 'cpu'# 'cuda' = default GPU (1.) 'cuda:1' = 2nd GPU. 'cuda:2' = 3rd GPU.  NVIDIA GPUs only!
 
 if compute != 'cpu': print(f"Using GPU {torch.cuda.current_device()}   ({torch.cuda.get_device_name(torch.cuda.current_device())})\n\n\n")
 print("\n(1) Model   (Create a new model and save it as one file.)")
