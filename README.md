@@ -56,7 +56,7 @@ Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 <br>
 <br>
 
-# (WIP) GPU - do these steps in order
+## (WIP) GPU - do these steps in order
 
 ```text
 SSD     $ 43 amazon.com/dp/B09ZYPTXS4
