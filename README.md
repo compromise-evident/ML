@@ -93,10 +93,9 @@ grey/black slots only: if 2 RAM stick
 * ```nvcc --version``` (just to verify) - should show CUDA version.
 * ```apt install python3-torch```.
 * ```apt install geany psensor```.
-* Grab a zip of this repository and extract it.
-* Open ML-GPU.py in Geany (the text editor you just installed.)
+* Open ML.py in Geany (the text editor you just installed.)
 * Replace "python" with "python3" in Geany's execute command.
-* Replace 'cpu' with 'cuda'. F5 to run.
+* Replace 'cpu' with 'cuda' in ML.py. F5 to run.
 * Open psensor (the temperature display you just installed.)
 
 <br>
