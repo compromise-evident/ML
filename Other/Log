@@ -2,6 +2,10 @@ ML
 
 
 
+Version 3.0.0   Fast batch-training where a_batch=1 shows no difference in speed
+                vs non-batch. Hence merging with ML-GPU.py.
+                Nov 23 2024
+
 Version 2.0.4   Learning-rate option added,  you'll need it for  final training.
                 Nov 21 2024
 
