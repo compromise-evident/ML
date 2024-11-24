@@ -53,23 +53,32 @@ Each line in cognize.txt: ```- and @```, ```new line``` (\n.)
 
 --------------------------------------------------------
 
+--------------------------------------------------------
+
+--------------------------------------------------------
+
 <br>
 <br>
 
 ## (WIP) GPU - do these steps in order
 
 ```text
-SSD     $ 43 amazon.com/dp/B09ZYPTXS4
-PSU     $ 45 amazon.com/dp/B0B4MVDRX4
-RAM*2   $ 80 amazon.com/dp/B0143UM4TC
-MB      $ 90 amazon.com/dp/B08KH12V25 (comes with 2 SATA data cables)
-CPU     $160 amazon.com/dp/B091J3NYVF
-GPU     $285 amazon.com/dp/B08WPRMVWB
+SSD    $ 43 amazon.com/dp/B09ZYPTXS4
+PSU    $ 45 amazon.com/dp/B0B4MVDRX4
+RAM*2  $ 80 amazon.com/dp/B0143UM4TC
+MB     $ 90 amazon.com/dp/B08KH12V25 (comes with 2 SATA data cables)
+CPU    $160 amazon.com/dp/B091J3NYVF
+GPU    $285 amazon.com/dp/B08WPRMVWB
 ```
-* Flashback ####################################################
-* 4+4: motherboard "the connector that's secretly split in half if you take a closer look."####################################################
-* 6+2: GPU####################################################
-* grey/black slots only: if 2 RAM stick####################################################
+* Connect the PSU 24-pin, and 8-pin (4+4) connectors to the bare motherboard.
+* Format a thumb drive to fat32.
+* Go to ASUS support for that motherboard, download the latest BIOS update, extract it.
+* Rename the .CAP file to "PB450MA2.CAP" and copy it to the thumb drive.
+* Insert the thumb drive into the motherboard USB port closest to the HDMI port.
+* Press and hold the motherboard's Flashback button for 3 seconds.
+* In a few minutes, the motherboard will stop blinking.
+* Assemble (motherboard takes PSU 24-pin and 8-pin (4+4) connectors. GPU takes PSU 8-pin (6+2) connector.
+* If only 2 RAM sticks, insert them into only the grey slots, or only the black slots on the motherboard.
 * Safe preset overclock: change "Normal" to "Optimal" in BIOS, and update BIOS time (24-hour time.)
 * Do a fresh install of Devuan Linux (or Debian-based Linux).
 * ```apt install firmware-amd-graphics xserver-xorg-video-amdgpu``` then reboot. (Full res for CPU's iGPU.)
