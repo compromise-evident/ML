@@ -8,8 +8,8 @@ longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.
 classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)  output  layer
 depth   =    2 # Number of hidden layers  (the active brain parts of your model.)  n hidden layers
 width   =   50 # Number of neurons per hidden layer (wide = attentive to detail.)  hidden layer size
-retrain =   15 # Number of times to train on entire train.txt. See, batches >1 require more training.
-a_batch =  128 # Number of train.txt items studied at once.  2^n for GPU. If 1, retrain can be small.
+retrain =   10 # Number of times to train on entire train.txt. See, batches >1 require more training.
+a_batch =   64 # Number of train.txt items studied at once.  2^n for GPU. If 1, retrain can be small.
 ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is adjusted.
 compute = 'cpu'# 'cuda' = default GPU (1.) 'cuda:1' = 2nd GPU. 'cuda:2' = 3rd GPU.  NVIDIA GPUs only!
 
