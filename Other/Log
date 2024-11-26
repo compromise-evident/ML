@@ -2,6 +2,12 @@ ML
 
 
 
+Version 3.0.1   Simplified,no more GPU. The GPU stuff is backed up in the folder
+                "More_stuff". Now I have time to focus on gold:   "consensusML",
+                where n models vote on classification.But hey,all this GPU stuff
+                led me to batch-training perfection.
+                Nov 25 2024
+
 Version 3.0.0   Fast batch-training where a_batch=1 shows no difference in speed
                 vs non-batch. Hence merging with ML-GPU.py.
                 Nov 23 2024
