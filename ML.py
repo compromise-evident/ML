@@ -9,8 +9,8 @@ classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.
 width   =   70 # Number of neurons per hidden layer (wide = attentive to detail.)    hidden layer size
 depth   =    3 # Number of hidden layers  (the active brain parts of your model.)    hidden layer quantity
 ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is to be adjusted.
-a_batch =   64 # Number of train.txt items studied at once; accumulated. If 1, retrain can also be 1/small.
-retrain =   10 # Number of times to train on entire train.txt.  Accumulation (a_batch > 1) needs more runs.
+a_batch =   32 # Number of train.txt items studied at once; accumulated. If 1, retrain can also be 1/small.
+retrain =    7 # Number of times to train on entire train.txt.  Accumulation (a_batch > 1) needs more runs.
 
 print("\n(1) Model   (Create a new model and save it as one file.)")
 print(  "(2) Train   (Train & test model on train.txt & test.txt.)")
