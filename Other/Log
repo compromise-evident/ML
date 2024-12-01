@@ -2,6 +2,12 @@ ML
 
 
 
+Version 3.0.2   After training, model is saved as it were, but upon then testing
+                (automatically as option 2) model is not loaded again because it
+                resides updated in memory. But strictly option 3 will load model
+                as it were. Efficient for big models; easy on storage/resources.
+                Nov 30 2024
+
 Version 3.0.1   Simplified,no more GPU. The GPU stuff is backed up in the folder
                 "More_stuff". Now I have time to focus on gold:   "consensusML",
                 where n models vote on classification.But hey,all this GPU stuff
