@@ -1,4 +1,4 @@
-# ML 3.0.1 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
+# ML 3.0.2 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
 #            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
 
 import torch, torch.nn as nn, torch.optim as optim
@@ -45,7 +45,7 @@ if o == 2: # Train______________________________________________________________
 	torch.save(model.state_dict(), 'Model.pth');                                                                                           # Saves updated model.
 
 if o == 3 or o == 2: # Test__________________________________________________________________________________________________________________________________________
-	model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                                   # Loads model from file.
+	if o == 3: model.load_state_dict(torch.load('Model.pth', map_location = 'cpu'))                                                        # Loads model from file.
 	with open('training-data/test.txt', 'r') as f: total_testing_data_items = sum(1 for line in f)                                         # Quantity to test on.
 	misclassified = 0; off_by_summation = 0; model.eval(); print("\n", end = '');
 	in_stream = open('training-data/test.txt', 'r'); out_stream = open('results.txt', 'w'); out_xtra = open('results_extra.txt', 'w');
