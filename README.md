@@ -2,7 +2,7 @@ Run it: ```apt install geany python3-torch```. Open the .py in Geany.<br>
 Replace ```python``` with ```python3``` in Geany's execute command. F5 to run.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Terminal_4e4abe173a64d076364fff6df84783f0.png">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ML/refs/heads/main/Other/Terminal.png">
 </p>
 
 <br>
