@@ -1,16 +1,16 @@
-# ML 3.0.2 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given training-            Run it: "apt install geany python3-torch". Open the .py in Geany.
-#            data by scoring well. Then replace the data with your own (label & string per line in text file.)          Replace "python" with "python3" in Geany's execute command. F5 to run.
-
-import torch, torch.nn as nn, torch.optim as optim
-
-# YOUR CONTROLS (CHANGE ANY 1st 4? GET NEW MODEL!)
-longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)    input  layer
+# YOUR CONTROLS (CHANGE ANY 1st 4? GET NEW MODEL!)                                                                                         Run it: "apt install geany python3-torch". Open the .py in Geany.
+longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)    input  layer                                          Replace "python" with "python3" in Geany's execute command. F5 to run.
 classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)    output layer
-width   =  200 # Number of neurons per hidden layer (wide = attentive to detail.)    hidden layer size
+width   =   70 # Number of neurons per hidden layer (wide = attentive to detail.)    hidden layer size
 depth   =    2 # Number of hidden layers  (the active brain parts of your model.)    hidden layer quantity
 ln_rate = 0.01 # Learning-rate. This tells PyTorch how aggressively each model parameter is to be adjusted.
-a_batch =   32 # Number of train.txt items studied at once; accumulated. If 1, retrain can also be 1/small.
-retrain =    7 # Number of times to train on entire train.txt.  Accumulation (a_batch > 1) needs more runs.
+a_batch =    1 # Number of train.txt items studied at once; accumulated. If 1, retrain can also be 1/small.
+retrain =    1 # Number of times to train on entire train.txt. It's best to increase retrain if a_batch >1.
+
+# Version 3.0.2 - AI simplified in 1 file, 80 lines. Verify that your model can generalize on the given
+# training-data by scoring well. Then replace the data with your own (label & string per line in text file.)
+
+import torch, torch.nn as nn, torch.optim as optim
 
 print("\n(1) Model   (Create a new model and save it as one file.)")
 print(  "(2) Train   (Train & test model on train.txt & test.txt.)")
