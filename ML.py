@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # YOUR CONTROLS (CHANGE ANY 1st 4? GET NEW MODEL!)                                                                                         Run it: "apt install geany python3-torch". Open the .py in Geany.
 longest =  784 # Longest data string in train.txt, test.txt, cognize.txt  (safe.)    input  layer                                          Replace "python" with "python3" in Geany's execute command. F5 to run.
 classes =   10 # Number of different labels (2 = labels 0,1. 500 = labels 0-499.)    output layer
